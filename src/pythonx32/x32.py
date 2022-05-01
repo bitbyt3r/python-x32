@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import OSC
 import time
 import threading
-import Queue
+import queue
 from collections import namedtuple
 from pythonx32.x32parameters import get_settings
 import json
@@ -57,7 +57,7 @@ def answers_to_queue_thread(server, queue):
 
 setting_paths = get_settings()
 
-class TimeoutError(StandardError):
+class TimeoutError(Exception):
     pass
 
 class BehringerX32(object):
@@ -69,7 +69,7 @@ class BehringerX32(object):
         
         self._client.connect((x32_address, 10023))
         
-        self._input_queue = Queue.Queue()
+        self._input_queue = queue.Queue()
         self._listener_thread = answers_to_queue_thread(self._server, queue=self._input_queue)
 
     def ping(self):
@@ -79,7 +79,7 @@ class BehringerX32(object):
         while True:
             try:
                 self._input_queue.get_nowait()
-            except Queue.Empty:
+            except queue.Empty:
                 break            
         self._client.send(OSC.OSCMessage(path))
         return self._input_queue.get(timeout=self._timeout).data

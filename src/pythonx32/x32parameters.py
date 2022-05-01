@@ -556,5 +556,5 @@ if __name__=="__main__":
     settings = get_settings()
     
     for setting in settings:
-        print setting
-    print len(settings)
+        print(setting)
+    print(len(settings))
