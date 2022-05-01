@@ -104,7 +104,7 @@ class BehringerX32(object):
         state = {}
         for index, path in enumerate(setting_paths):
             if self._verbose and index % 100 == 0:
-                print "Reading parameter %d of %d from x32" % (index, len(setting_paths))
+                print("Reading parameter %d of %d from x32" % (index, len(setting_paths)))
             value = self.get_value(path)
             assert len(value) == 1
             state[path] = value[0]
@@ -123,7 +123,7 @@ class BehringerX32(object):
         for index, my_tuple in enumerate(parameters):
             key, value = my_tuple
             if self._verbose and index % 100 == 0:
-                print "Writing parameter %d of %d to x32" % (index, len(state))
+                print("Writing parameter %d of %d to x32" % (index, len(state)))
             self.set_value(path=key, value=[value], readback=True)
         return
             
@@ -169,7 +169,7 @@ if __name__ == '__main__':
     mixer.ping()
     
     if args.to_mixer and args.from_mixer:
-        print "Only one of to_mixer and from_mixer must be present at same time." 
+        print("Only one of to_mixer and from_mixer must be present at same time.")
         parser.print_help()
         sys.exit(1)
     elif args.from_mixer:        
@@ -179,7 +179,7 @@ if __name__ == '__main__':
         read_back_state = mixer.read_state_from_file(inputfile=open(args.filename, "rt"))
         mixer.set_state(state=read_back_state)
     else:
-        print "One of to_mixer and from_mixer must be present." 
+        print("One of to_mixer and from_mixer must be present.")
         parser.print_help()
         sys.exit(1)
-    
+
