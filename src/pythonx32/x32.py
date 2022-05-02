@@ -72,6 +72,10 @@ class BehringerX32(object):
         self._input_queue = queue.Queue()
         self._listener_thread = answers_to_queue_thread(self._server, queue=self._input_queue)
 
+    def __del__(self):
+        self._server.close()
+        self._client.close()
+
     def ping(self):
         self.get_value(path="/info")
     
