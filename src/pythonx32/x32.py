@@ -61,13 +61,13 @@ class TimeoutError(Exception):
     pass
 
 class BehringerX32(object):
-    def __init__(self, x32_address, server_port, verbose, timeout=10):
+    def __init__(self, x32_address, server_port, verbose, timeout=10, behringer_port=10023):
         self._verbose = verbose
         self._timeout = timeout
         self._server = OSC.OSCServer(("", server_port))
         self._client = OSC.OSCClient(server=self._server) #This makes sure that client and server uses same socket. This has to be this way, as the X32 sends notifications back to same port as the /xremote message came from
         
-        self._client.connect((x32_address, 10023))
+        self._client.connect((x32_address, behringer_port))
         
         self._input_queue = queue.Queue()
         self._listener_thread = answers_to_queue_thread(self._server, queue=self._input_queue)
