@@ -91,6 +91,9 @@ class BehringerX32(object):
     def get_msg_from_queue(self):
         return self._input_queue.get(timeout=self._timeout)
 
+    def put_msg_on_queue(self, msg):
+        self._input_queue.put(msg)
+
     def set_value(self, path, value, readback=True):
         self._client.send(OSC.OSCMessage(path, value))
         if readback:
