@@ -77,16 +77,27 @@ class BehringerX32(object):
         self._client.close()
 
     def ping(self):
-        self.get_value(path="/info")
+        self.get_value(path="/info", safe_get=False)
     
-    def get_value(self, path):
+    def get_value(self, path, safe_get=True):
         while True:
             try:
                 self._input_queue.get_nowait()
             except queue.Empty:
                 break            
-        self._client.send(OSC.OSCMessage(path))
-        return self._input_queue.get(timeout=self._timeout).data
+        if not safe_get:
+            self._client.send(OSC.OSCMessage(path))
+            return self._input_queue.get(timeout=self._timeout).data
+        else:
+            start_time = time.time()
+            while True:
+                self._client.send(OSC.OSCMessage(path))
+                mess = self._input_queue.get(timeout=self._timeout)
+                if mess.address == path:
+                  return mess.data
+                if time.time() - start_time > self._timeout:
+                  raise TimeoutError("Timeout while readback of path %s" % path,)
+                time.sleep(0.0001)
 
     def get_msg_from_queue(self):
         return self._input_queue.get(timeout=self._timeout)
