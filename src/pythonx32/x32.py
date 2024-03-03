@@ -115,7 +115,9 @@ class BehringerX32(object):
                 if len(value) == 1 and len(read_back_value)==1:
                     if type(value[0]) is float and math.isnan(value[0]) and math.isnan(read_back_value[0]):
                         break
-                if round(read_back_value[0], 7) == round(value[0], 7):
+                if value and type(value[0]) is float and round(read_back_value[0], 7) == round(value[0], 7):
+                    break
+                if read_back_value == value:
                     break
                 if time.time() - start_time > self._timeout:
                     raise TimeoutError("Timeout while readback of path %s, value=%s, read_back_value=%s" % (path, value, read_back_value)) 
