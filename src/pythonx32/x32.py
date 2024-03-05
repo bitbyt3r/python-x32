@@ -37,6 +37,7 @@ from pythonx32.x32parameters import get_settings
 import json
 import sys
 import math
+import socket
 
 ReceivedMessage = namedtuple("ReceivedMessage", "address, tags, data, client_address")
 
@@ -64,6 +65,14 @@ class BehringerX32(object):
     def __init__(self, x32_address, server_port, verbose, timeout=10, behringer_port=10023):
         self._verbose = verbose
         self._timeout = timeout
+        self._found_addr = -1
+
+        # if no address is given, search for mixer
+        if not x32_address:
+            addr_subnet = self.__search_mixer__(server_port)
+            x32_address = f"{addr_subnet}.{self._found_addr}"
+            behringer_port = self._found_port
+
         self._server = OSC.OSCServer(("", server_port))
         self._client = OSC.OSCClient(server=self._server) #This makes sure that client and server uses same socket. This has to be this way, as the X32 sends notifications back to same port as the /xremote message came from
         
@@ -75,6 +84,43 @@ class BehringerX32(object):
     def __del__(self):
         self._server.close()
         self._client.close()
+
+    def __search_mixer__(self, local_port):
+        addr_subnet = '.'.join(self.__get_ip__().split('.')[0:3]) # only use first three numbers of local IP address
+        while self._found_addr < 0:
+            for j in range(10024, 10022, -1): # X32:10023, XAIR:10024 -> check both
+                if self._found_addr < 0:
+                    for i in range(2, 255):
+                        threading.Thread(target = self.__try_to_ping_mixer__, args = (addr_subnet, local_port + 1, i, j, )).start()
+                        if self._found_addr >= 0:
+                            break
+                if self._found_addr < 0:
+                    time.sleep(2) # time-out is 1 second -> wait two-times the time-out
+        return addr_subnet
+
+    def __try_to_ping_mixer__(self, addr_subnet, start_port, i, j):
+        search_mixer = BehringerX32(f"{addr_subnet}.{i}", start_port + i + j, False, 1, j) # just one second time-out
+        try:
+            search_mixer.ping()
+            search_mixer.__del__() # important to delete object before changing found_addr
+            self._found_addr = i
+            self._found_port = j
+        except:
+            search_mixer.__del__()
+
+    def __get_ip__(self):
+        # taken from stack overflow "Finding local IP addresses using Python's stdlib"
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.settimeout(0)
+        try:
+            # doesn't even have to be reachable
+            s.connect(('10.255.255.255', 1))
+            IP = s.getsockname()[0]
+        except Exception:
+            IP = '127.0.0.1'
+        finally:
+            s.close()
+        return IP
 
     def ping(self):
         self.get_value(path="/info", safe_get=False)
