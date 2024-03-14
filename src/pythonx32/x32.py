@@ -38,6 +38,7 @@ import json
 import sys
 import math
 import socket
+import numpy
 
 ReceivedMessage = namedtuple("ReceivedMessage", "address, tags, data, client_address")
 
@@ -150,6 +151,23 @@ class BehringerX32(object):
 
     def put_msg_on_queue(self, msg):
         self._input_queue.put(msg)
+
+    def db_to_float(self, d, is_bus=False): # based on UNOFFICIAL_X32_OSC_REMOTE_PROTOCOL.pdf
+        if d < -60:
+            f = (d + 90) / 480
+        elif d < -30:
+            f = (d + 70) / 160
+        elif d < -10:
+            f = (d + 50) / 80
+        else:
+            f = (d + 30) / 40
+        return round(f * 160) / 160 if is_bus else round(f * 1023) / 1023
+
+    def freq_to_float(self, f):
+        return round(numpy.log(f / 20) / numpy.log(20000 / 20) * 200) / 200
+
+    def q_to_float(self, q):
+        return 1 - round(numpy.log(q / 0.3) / numpy.log(10 / 0.3) * 71) / 71
 
     def set_value(self, path, value, readback=True):
         self._client.send(OSC.OSCMessage(path, value))
