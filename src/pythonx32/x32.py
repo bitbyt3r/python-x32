@@ -144,7 +144,7 @@ class BehringerX32(object):
                   return mess.data
                 if time.time() - start_time > self._timeout:
                   raise TimeoutError("Timeout while readback of path %s" % path,)
-                time.sleep(0.0001)
+                time.sleep(0.001)
 
     def get_msg_from_queue(self):
         return self._input_queue.get(timeout=self._timeout)
