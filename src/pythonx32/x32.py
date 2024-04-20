@@ -185,7 +185,8 @@ class BehringerX32(object):
                     break
                 if time.time() - start_time > self._timeout:
                     raise TimeoutError("Timeout while readback of path %s, value=%s, read_back_value=%s" % (path, value, read_back_value)) 
-                time.sleep(0.0001)
+                time.sleep(0.001)
+                self._client.send(OSC.OSCMessage(path, value))
                 
     def get_state(self):        
         state = {}
