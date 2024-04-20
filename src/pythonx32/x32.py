@@ -161,13 +161,13 @@ class BehringerX32(object):
             f = (d + 50) / 80
         else:
             f = (d + 30) / 40
-        return round(f * 160) / 160 if is_bus else round(f * 1023) / 1023
+        return float(round(f * 160) / 160 if is_bus else round(f * 1023) / 1023)
 
     def freq_to_float(self, f, max=20000):
-        return round(numpy.log(f / 20) / numpy.log(max / 20) * 200) / 200
+        return float(round(numpy.log(f / 20) / numpy.log(max / 20) * 200) / 200)
 
     def q_to_float(self, q):
-        return 1 - round(numpy.log(q / 0.3) / numpy.log(10 / 0.3) * 71) / 71
+        return float(1 - round(numpy.log(q / 0.3) / numpy.log(10 / 0.3) * 71) / 71)
 
     def set_value(self, path, value, readback=True):
         self._client.send(OSC.OSCMessage(path, value))
