@@ -485,10 +485,13 @@ class LinearFloatSetting(Setting):
 class LogFloatSetting(LinearFloatSetting):
     pass
 
-class LevelFloatSetting(LinearFloatSetting):
+class LevelFloatSetting(Setting):
     def __init__(self, string):
         super().__init__(string)
-
+        
+    def validate(self, value):
+        return type(value) is float
+    
     def serialize(self, value):
         if value < -60:
             f = (value + 90) / 480
