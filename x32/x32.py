@@ -28,17 +28,15 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import OSC
 import time
 import threading
 import queue
 from collections import namedtuple
-from pythonx32.x32parameters import get_settings
 import json
 import sys
 import math
 import socket
-import numpy
+from . import OSC, x32parameters
 
 ReceivedMessage = namedtuple("ReceivedMessage", "address, tags, data, client_address")
 
@@ -57,7 +55,7 @@ def answers_to_queue_thread(server, queue):
     thread.start()
     return thread
 
-setting_paths = get_settings()
+setting_paths = x32parameters.get_settings()
 
 class TimeoutError(Exception):
     pass
@@ -127,6 +125,7 @@ class BehringerX32(object):
         self.get_value(path="/info", safe_get=False)
     
     def get_value(self, path, safe_get=True):
+        print(f"Getting {path}")
         while True:
             try:
                 self._input_queue.get_nowait()
@@ -164,10 +163,10 @@ class BehringerX32(object):
         return float(round(f * 160) / 160 if is_bus else round(f * 1023) / 1023)
 
     def freq_to_float(self, f, max=20000):
-        return float(round(numpy.log(f / 20) / numpy.log(max / 20) * 200) / 200)
+        return float(round(math.log(f / 20) / math.log(max / 20) * 200) / 200)
 
     def q_to_float(self, q):
-        return float(1 - round(numpy.log(q / 0.3) / numpy.log(10 / 0.3) * 71) / 71)
+        return float(1 - round(math.log(q / 0.3) / math.log(10 / 0.3) * 71) / 71)
 
     def set_value(self, path, value, readback=True):
         self._client.send(OSC.OSCMessage(path, value))

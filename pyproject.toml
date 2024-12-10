@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "x32"
+version = "2024.12.09"
+dependencies = []
+requires-python = ">=3.8"
+authors = []
+maintainers = []
+description = "Library for controlling the Behringer X32 audio board"
+
+[project.urls]
+Homepage = "https://github.com/bitbyt3r/python-x32"
+Repository = "https://github.com/bitbyt3r/python-x32.git"
+
+[project.scripts]
+x32dump = "x32:dumpmessages.__main__"

@@ -28,7 +28,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import OSC
+from . import OSC
 import time
 import threading
 
@@ -47,8 +47,8 @@ def print_all_x32_change_messages(x32_address, server_udp_port, filename):
         outputfile = None
 
     def msgPrinter_handler(addr, tags, data, client_address):
-        txt = 'OSCMessage("%s", %s)' % (addr, data)
-        print txt
+        txt = f"OSCMessage(\"{addr}\", {data})"
+        print(txt)
         if outputfile is not None:
             outputfile.write(txt+"\n")
 
@@ -62,7 +62,7 @@ def print_all_x32_change_messages(x32_address, server_udp_port, filename):
     thread.start()
     server.serve_forever()
 
-if __name__ == '__main__':
+def __main__():
     import argparse
 
     parser = argparse.ArgumentParser(description="Dump all change/state messages from Behringer X32 mixing desk. This tool can be used to find undocumented messages.")
@@ -75,4 +75,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     print_all_x32_change_messages(x32_address = args.address, server_udp_port = args.port, filename = args.filename)
-    
+
+if __name__ == '__main__':
+    __main__()
