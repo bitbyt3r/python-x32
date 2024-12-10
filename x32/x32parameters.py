@@ -457,6 +457,7 @@ class EnumSetting(Setting):
         return self.values.index(value)
 
     def deserialize(self, value):
+        print(f"{self.path}, {value}")
         value = value[0]
         return self.values[value]
     
