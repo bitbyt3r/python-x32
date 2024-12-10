@@ -125,7 +125,6 @@ class BehringerX32(object):
         self.get_value(path="/info", safe_get=False)
     
     def get_value(self, path, safe_get=True):
-        print(f"Getting {path}")
         while True:
             try:
                 self._input_queue.get_nowait()
@@ -176,7 +175,7 @@ class BehringerX32(object):
         if readback:
             start_time = time.time()
             while True:
-                read_back_value = self.get_value(path)
+                read_back_value = self.get_value(path)[0]
                 #Special case for nans
                 if len(value) == 1 and len(read_back_value)==1:
                     if type(value[0]) is float and math.isnan(value[0]) and math.isnan(read_back_value[0]):
