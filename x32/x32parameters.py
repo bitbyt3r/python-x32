@@ -467,7 +467,6 @@ class IntSetting(Setting):
         self.low, self.high = self.validation.split("[")[1].split("]")[0].split(",")
 
     def validate(self, value):
-        value = value[0]
         return type(value) is int and (self.low <= value <= self.high)
     
 class LinearFloatSetting(Setting):
