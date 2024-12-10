@@ -428,11 +428,11 @@ class Setting():
         self.datatype = "string"
         self.validation = None
         self.units = None
-        if len(parts >= 2):
+        if len(parts) >= 2:
             self.datatype = parts[1]
-        if len(parts >= 3):
+        if len(parts) >= 3:
             self.validation = parts[2]
-        if len(parts >= 4):
+        if len(parts) >= 4:
             self.units = parts[3]
     
     def validate(self, value):
@@ -442,12 +442,12 @@ class Setting():
         return value
     
     def deserialize(self, value):
-        return value
+        return value[0]
 
 class EnumSetting(Setting):
     def __init__(self, string):
-        super(string)
-        self.values = self.validation.split("{")[1].split(["}"])[0].split(",")
+        super().__init__(string)
+        self.values = self.validation.split("{")[1].split("}")[0].split(",")
         assert self.values
 
     def validate(self, value):
@@ -457,35 +457,37 @@ class EnumSetting(Setting):
         return self.values.index(value)
 
     def deserialize(self, value):
+        value = value[0]
         return self.values[value]
     
 class IntSetting(Setting):
     def __init__(self, string):
-        super(string)
-        self.low, self.high = self.validation.split("[")[1].split(["]"])[0].split(",")
+        super().__init__(string)
+        self.low, self.high = self.validation.split("[")[1].split("]")[0].split(",")
 
     def validate(self, value):
+        value = value[0]
         return type(value) is int and (self.low <= value <= self.high)
     
 class LinearFloatSetting(Setting):
     def __init__(self, string):
-        super(string)
-        self.low, self.high, self.step = self.validation.split("[")[1].split(["]"])[0].split(",")
+        super().__init__(string)
+        self.low, self.high, self.step = self.validation.split("[")[1].split("]")[0].split(",")
 
     def validate(self, value):
         return type(value) is float
 
 class LogFloatSetting(Setting):
     def __init__(self, string):
-        super(string)
-        self.low, self.high, self.step = self.validation.split("[")[1].split(["]"])[0].split(",")
+        super().__init__(string)
+        self.low, self.high, self.step = self.validation.split("[")[1].split("]")[0].split(",")
 
     def validate(self, value):
         return type(value) is float
 
 class LevelFloatSetting(Setting):
     def __init__(self, string):
-        super(string)
+        super().__init__(string)
         
     def validate(self, value):
         return type(value) is float
@@ -502,6 +504,7 @@ class LevelFloatSetting(Setting):
         return float(round(f * 1023.5) / 1023)
     
     def deserialize(self, value):
+        value = value[0]
         if value >= 0.5:
             return value * 40 - 30
         if value >= 0.25:
@@ -526,14 +529,14 @@ def get_settings():
     
     This is all settings that need to be set for audiopath of control to be set to known state.
     """
-    setting_lines = [x for x in settings_from_doc.split("\n") if x.startswith("/")]
+    setting_lines = [x.strip() for x in settings_from_doc.split("\n") if x.startswith("/")]
     
     setting_names = []
     settings = {}
     for setting_line in setting_lines:
         indexes = []
         template = ""
-        for part in setting_line.strip().split("/"):
+        for part in setting_line.split(" ")[0].strip().split("/"):
             if len(part):
                 if part.startswith("["):
                     first, last = part.split("..")
@@ -545,16 +548,16 @@ def get_settings():
                 else:
                     template += "/"+part
         if not indexes:
-            setting_names.append(template)
+            setting_names.append(template + setting_line.split(" ", 1)[1])
         else:
             for current in itertools.product(*indexes):
-                setting_names.append(template % current)
+                setting_names.append((template % current) + " " + setting_line.split(" ", 1)[1])
     
     for setting_name in setting_names:
         setting = Setting(setting_name)
         if setting.datatype in setting_types:
             setting = setting_types[setting.datatype](setting_name)
-        settings[setting_name] = setting
+        settings[setting_name.split(" ")[0]] = setting
         
     return settings
                 
