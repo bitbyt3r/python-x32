@@ -73,101 +73,27 @@ settings_from_doc = """--------- config data ---------
 /config/osc/fsel enum {F1,F2}
 /config/osc/type enum {SINE,PINK,WHITE}
 /config/osc/dest int [0,25]
-/config/routing/IN/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32}
-/config/routing/IN/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32}
-/config/routing/IN/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32}
-/config/routing/IN/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32}
+/config/routing/IN/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32}
+/config/routing/IN/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32}
+/config/routing/IN/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32}
+/config/routing/IN/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32}
 /config/routing/IN/AUX enum {AUX1-4, AN1-2, AN1-4, AN1-6, A1-2, A1-4 A1-6, B1-2, B1-4, B1-6, CARD1-2, CARD1-4, CARD1-6, UIN1-2, UIN1-4, UIN1-6}
-/config/routing/AES50A/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50A/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50A/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50A/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50A/33-40 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}/config/routing/AES50A/41-48 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50B/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50B/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50B/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50B/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50B/33-40 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/AES50B/41-48 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/CARD/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/CARD/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}/config/routing/CARD/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
-/config/routing/CARD/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-
-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-
-16,B17-24,B25-32,B33-40,B41-48,CARD1-
-8,CARD9-16,CARD17-24,CARD25-32,OUT1-
-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50A/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50A/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50A/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50A/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50A/33-40 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50A/41-48 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50B/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50B/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50B/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50B/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50B/33-40 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/AES50B/41-48 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/CARD/1-8 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/CARD/9-16 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/CARD/17-24 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
+/config/routing/CARD/25-32 enum {AN1-8,AN9-16,AN17-24,AN25-32,A1-8,A9-16,A17-24,A25-32,A33-40,A41-48,B1-8,B9-16,B17-24,B25-32,B33-40,B41-48,CARD1-8,CARD9-16,CARD17-24,CARD25-32,OUT1-8,OUT9-16,P161-8,P169-16,AUX/CR}
 /config/tape/gainL linf [-6.000,24.000,0.500] dB
 /config/tape/gainR linf [-6.000,24.000,0.500] dB
 /config/tape/autoplay enum {OFF,ON}
@@ -211,9 +137,7 @@ settings_from_doc = """--------- config data ---------
 /ch/[01..32]/dyn/filter/f logf [20.000,20000,201] Hz
 /ch/[01..32]/insert/on enum {OFF,ON}
 /ch/[01..32]/insert/pos enum {PRE,POST}
-/ch/[01..32]/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,
-FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,
-FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
+/ch/[01..32]/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /ch/[01..32]/eq/on enum {OFF,ON}
 /ch/[01..32]/eq/[1..4]/type enum {LCut,LShv,PEQ,VEQ,HShv,HCut}
 /ch/[01..32]/eq/[1..4]/f logf [20.000,20000,201] Hz
@@ -333,9 +257,7 @@ FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /bus/[01..16]/dyn/filter/f logf [20.000,20000,201] Hz
 /bus/[01..16]/insert/on enum {OFF,ON}
 /bus/[01..16]/insert/pos enum {PRE,POST}
-/bus/[01..16]/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,
-FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,
-FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
+/bus/[01..16]/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /bus/[01..16]/eq/on enum {OFF,ON}
 /bus/[01..16]/eq/[1..6]/type enum {LCut,LShv,PEQ,VEQ,HShv,HCut}
 /bus/[01..16]/eq/[1..6]/f logf [20.000,20000,201] Hz/bus/[01..16]/eq/[1..6]/g linf [-15.000,15.000,0.250] dB
@@ -374,9 +296,7 @@ FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /mtx/[01..06]/dyn/filter/f logf [20.000,20000,201] Hz
 /mtx/[01..06]/insert/on enum {OFF,ON}
 /mtx/[01..06]/insert/pos enum {PRE,POST}
-/mtx/[01..06]/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,
-FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,
-FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
+/mtx/[01..06]/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /mtx/[01..06]/eq/on enum {OFF,ON}
 /mtx/[01..06]/eq/[1..6]/type enum {LCut,LShv,PEQ,VEQ,HShv,HCut}
 /mtx/[01..06]/eq/[1..6]/f logf [20.000,20000,201] Hz
@@ -404,9 +324,7 @@ FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /main/st/dyn/filter/f logf [20.000,20000,201] Hz
 /main/st/insert/on enum {OFF,ON}
 /main/st/insert/pos enum {PRE,POST}
-/main/st/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,
-FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,
-FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
+/main/st/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /main/st/eq/on enum {OFF,ON}
 /main/st/eq/[1..6]/type enum {LCut,LShv,PEQ,VEQ,HShv,HCut}
 /main/st/eq/[1..6]/f logf [20.000,20000,201] Hz
@@ -440,9 +358,7 @@ FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /main/m/dyn/filter/f logf [20.000,20000,201] Hz
 /main/m/insert/on enum {OFF,ON}
 /main/m/insert/pos enum {PRE,POST}
-/main/m/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,
-FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,
-FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
+/main/m/insert/sel enum {OFF,FX1L,FX1R,FX2L,FX2R,FX3L,FX3R,FX4L,FX4R,FX5L,FX5R,FX6L,FX6R,FX7L,FX7R,FX8L,FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /main/m/eq/on enum {OFF,ON}
 /main/m/eq/[1..6]/type enum {LCut,LShv,PEQ,VEQ,HShv,HCut}
 /main/m/eq/[1..6]/f logf [20.000,20000,201] Hz
@@ -462,29 +378,17 @@ FX8R,AUX1,AUX2,AUX3,AUX4,AUX5,AUX6}
 /dca/[1..8]/config/icon int [1,74]
 /dca/[1..8]/config/color enum {OFF,RD,GN,YE,BL,MG,CY,WH}
 --------- effects fx [1..4] ---------
-/fx/[1..4]/type enum {HALL,PLAT,VREV,VRM,AMBI,GATE,RVRS,DL
-Y,3TAP,CRS,FLNG,PHAS,FILT,ROTA,PAN,D/R
-V,CR/R,FL/R,D/CR,D/FL,GEQ2,GEQ,TEQ2,TE
-Q,WAVD,LIM,ENH2,ENH,EXC2,EXC,IMG,AM
-P2,AMP,DRV2,DRV,PIT2,PIT}
-/fx/[1..4]/source/l enum {INS,MIX1,MIX2,MIX3,MIX4,MIX5,MIX6,MIX
-7,MIX8,MIX9,MIX10,MIX11,MIX12,MIX13,
-MIX14,MIX15,MIX16}
-/fx/[1..4]/source/r enum {INS,MIX1,MIX2,MIX3,MIX4,MIX5,MIX6,MIX
-7,MIX8,MIX9,MIX10,MIX11,MIX12,MIX13,
-MIX14,MIX15,MIX16}/fx/[1..4]/par/[01..64] linf/logf (depending on selected effect type)
+/fx/[1..4]/type enum {HALL,PLAT,VREV,VRM,AMBI,GATE,RVRS,DLY,3TAP,CRS,FLNG,PHAS,FILT,ROTA,PAN,D/RV,CR/R,FL/R,D/CR,D/FL,GEQ2,GEQ,TEQ2,TEQ,WAVD,LIM,ENH2,ENH,EXC2,EXC,IMG,AMP2,AMP,DRV2,DRV,PIT2,PIT}
+/fx/[1..4]/source/l enum {INS,MIX1,MIX2,MIX3,MIX4,MIX5,MIX6,MIX7,MIX8,MIX9,MIX10,MIX11,MIX12,MIX13,MIX14,MIX15,MIX16}
+/fx/[1..4]/source/r enum {INS,MIX1,MIX2,MIX3,MIX4,MIX5,MIX6,MIX7,MIX8,MIX9,MIX10,MIX11,MIX12,MIX13,MIX14,MIX15,MIX16}/fx/[1..4]/par/[01..64] linf/logf (depending on selected effect type)
 --------- effects fx [5..8] ---------
-/fx/[5..8]/type enum {GEQ2,GEQ,TEQ2,TEQ,WAVD,LIM,ENH2,EN
-H,EXC2,EXC,IMG,AMP2,AMP,DRV2,DRV,PH
-AS,FILT,PAN}
+/fx/[5..8]/type enum {GEQ2,GEQ,TEQ2,TEQ,WAVD,LIM,ENH2,ENH,EXC2,EXC,IMG,AMP2,AMP,DRV2,DRV,PHAS,FILT,PAN}
 /fx/[5..8]/par/[01..64] linf/logf (depending on selected effect type)
 --------- outputs main [01..16] ---------
 /outputs/main/[01..16]/src int [0,76]
 /outputs/main/[01..16]/pos enum {<-EQ,EQ->,PRE,POST}
 /outputs/main/[01..16]/delay/on enum {OFF,ON}
-/outputs/main/[01..16]/delay/time
-e
-linf [0.300,500.000,0.100] ms
+/outputs/main/[01..16]/delay/time linf [0.300,500.000,0.100] ms
 --------- outputs aux [01..06] ---------
 /outputs/aux/[01..06]/src int [0,76]
 /outputs/aux/[01..06]/pos enum {<-EQ,EQ->,PRE,POST}
@@ -517,6 +421,104 @@ linf [0.300,500.000,0.100] ms
 /-stat/lock [1]
 """
 
+class Setting():
+    def __init__(self, string):
+        parts = string.split(" ")
+        self.path = parts[0]
+        self.datatype = "string"
+        self.validation = None
+        self.units = None
+        if len(parts >= 2):
+            self.datatype = parts[1]
+        if len(parts >= 3):
+            self.validation = parts[2]
+        if len(parts >= 4):
+            self.units = parts[3]
+    
+    def validate(self, value):
+        return True
+    
+    def serialize(self, value):
+        return value
+    
+    def deserialize(self, value):
+        return value
+
+class EnumSetting(Setting):
+    def __init__(self, string):
+        super(string)
+        self.values = self.validation.split("{")[1].split(["}"])[0].split(",")
+        assert self.values
+
+    def validate(self, value):
+        return type(value) is str and (self.values is None or value in self.values)
+    
+    def serialize(self, value):
+        return self.values.index(value)
+
+    def deserialize(self, value):
+        return self.values[value]
+    
+class IntSetting(Setting):
+    def __init__(self, string):
+        super(string)
+        self.low, self.high = self.validation.split("[")[1].split(["]"])[0].split(",")
+
+    def validate(self, value):
+        return type(value) is int and (self.low <= value <= self.high)
+    
+class LinearFloatSetting(Setting):
+    def __init__(self, string):
+        super(string)
+        self.low, self.high, self.step = self.validation.split("[")[1].split(["]"])[0].split(",")
+
+    def validate(self, value):
+        return type(value) is float
+
+class LogFloatSetting(Setting):
+    def __init__(self, string):
+        super(string)
+        self.low, self.high, self.step = self.validation.split("[")[1].split(["]"])[0].split(",")
+
+    def validate(self, value):
+        return type(value) is float
+
+class LevelFloatSetting(Setting):
+    def __init__(self, string):
+        super(string)
+        
+    def validate(self, value):
+        return type(value) is float
+    
+    def serialize(self, value):
+        if value < -60:
+            f = (value + 90) / 480
+        elif value < -30:
+            f = (value + 70) / 160
+        elif value < -10:
+            f = (value + 50) / 80
+        else:
+            f = (value + 30) / 40
+        return float(round(f * 1023.5) / 1023)
+    
+    def deserialize(self, value):
+        if value >= 0.5:
+            return value * 40 - 30
+        if value >= 0.25:
+            return value * 80 - 50
+        if value >= 0.0625:
+            return value * 160 - 70
+        return value * 480 - 90
+
+setting_types = {
+    "enum": EnumSetting,
+    "int": IntSetting,
+    "level": LevelFloatSetting,
+    "logf": LogFloatSetting,
+    "linf": LinearFloatSetting,
+    "string": Setting
+}
+
 def get_settings():
     """This will generate a list with osc-paths to all settings from
     settings_from_doc
@@ -524,11 +526,10 @@ def get_settings():
     
     This is all settings that need to be set for audiopath of control to be set to known state.
     """
-    setting_lines = []
-    for line in settings_from_doc.splitlines():
-        if line.startswith("/"):
-            setting_lines.append(line.split()[0])
-    settings = []
+    setting_lines = [x for x in settings_from_doc.split("\n") if x.startswith("/")]
+    
+    setting_names = []
+    settings = {}
     for setting_line in setting_lines:
         indexes = []
         template = ""
@@ -544,10 +545,17 @@ def get_settings():
                 else:
                     template += "/"+part
         if not indexes:
-            settings.append(template)
+            setting_names.append(template)
         else:
             for current in itertools.product(*indexes):
-                settings.append(template % current)
+                setting_names.append(template % current)
+    
+    for setting_name in setting_names:
+        setting = Setting(setting_name)
+        if setting.datatype in setting_types:
+            setting = setting_types[setting.datatype](setting_name)
+        settings[setting_name] = setting
+        
     return settings
                 
 if __name__=="__main__":
