@@ -100,7 +100,7 @@ settings_from_doc = """--------- config data ---------
 --------- channel [01..32] (channel id 0..31) ---------
 /ch/[01..32]/config/name string [12]
 /ch/[01..32]/config/icon int [1,74]
-/ch/[01..32]/config/color enum {OFF,RD,GN,YE,BL,MG,CY,WH}
+/ch/[01..32]/config/color enum {OFF,RD,GN,YE,BL,MG,CY,WH,OFFi,RDi,GNi,YEi,BLi,MGi,CYi,WHi}
 /ch/[01..32]/config/source int [0,64]
 /ch/[01..32]/delay/on enum {OFF,ON}
 /ch/[01..32]/delay/time linf [0.300,500.000,0.100] ms
@@ -110,7 +110,7 @@ settings_from_doc = """--------- config data ---------
 /ch/[01..32]/preamp/hpslope enum {12,18,24}
 /ch/[01..32]/preamp/hpf logf [20.000,400.000,101] Hz
 /ch/[01..32]/gate/on enum {OFF,ON}
-/ch/[01..32]/gate/mode enum {GATE,DUCK}
+/ch/[01..32]/gate/mode enum {EXP2,EXP3,EXP4,GATE,DUCK}
 /ch/[01..32]/gate/thr linf [-80.000,0.000,0.500] dB
 /ch/[01..32]/gate/range linf [3.000,60.000,1.000] dB
 /ch/[01..32]/gate/attack linf [0.000,120.000,1.000] ms
