@@ -464,7 +464,9 @@ class EnumSetting(Setting):
 class IntSetting(Setting):
     def __init__(self, string):
         super().__init__(string)
-        self.low, self.high = self.validation.split("[")[1].split("]")[0].split(",")
+        low, high = self.validation.split("[")[1].split("]")[0].split(",")
+        self.low = int(low)
+        self.high = int(high)
 
     def validate(self, value):
         return type(value) is int and (self.low <= value <= self.high)
@@ -472,26 +474,21 @@ class IntSetting(Setting):
 class LinearFloatSetting(Setting):
     def __init__(self, string):
         super().__init__(string)
-        self.low, self.high, self.step = self.validation.split("[")[1].split("]")[0].split(",")
+        low, high, step = self.validation.split("[")[1].split("]")[0].split(",")
+        self.low = float(low)
+        self.high = float(high)
+        self.step = float(step)
 
     def validate(self, value):
         return type(value) is float
 
-class LogFloatSetting(Setting):
+class LogFloatSetting(LinearFloatSetting):
+    pass
+
+class LevelFloatSetting(LinearFloatSetting):
     def __init__(self, string):
         super().__init__(string)
-        self.low, self.high, self.step = self.validation.split("[")[1].split("]")[0].split(",")
 
-    def validate(self, value):
-        return type(value) is float
-
-class LevelFloatSetting(Setting):
-    def __init__(self, string):
-        super().__init__(string)
-        
-    def validate(self, value):
-        return type(value) is float
-    
     def serialize(self, value):
         if value < -60:
             f = (value + 90) / 480
