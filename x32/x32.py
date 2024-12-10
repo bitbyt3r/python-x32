@@ -76,7 +76,7 @@ class BehringerX32(object):
         while time.monotonic() - start < self._timeout:
             self._client.send(OSC.OSCMessage(path))
             time.sleep(0.005)
-            if self._settings.get(path, {}).get("timestamp") > start:
+            if self._settings.get(path, {}).get("timestamp", 0) > start:
                 return setting.deserialize(self._settings[path]["data"])
 
     def set_value(self, path, value):
