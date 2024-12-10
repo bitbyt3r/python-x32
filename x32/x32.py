@@ -137,13 +137,16 @@ class BehringerX32(object):
         else:
             start_time = time.time()
             while True:
-                self._client.send(OSC.OSCMessage(path))
-                mess = self._input_queue.get(timeout=self._timeout)
-                if mess.address == path:
-                  return mess.data
-                if time.time() - start_time > self._timeout:
-                  raise TimeoutError("Timeout while readback of path %s" % path,)
-                time.sleep(0.001)
+                try:
+                    self._client.send(OSC.OSCMessage(path))
+                    mess = self._input_queue.get(timeout=self._timeout)
+                    if mess.address == path:
+                        return mess.data
+                    if time.time() - start_time > self._timeout:
+                        raise TimeoutError("Timeout while readback of path %s" % path,)
+                    time.sleep(0.001)
+                except queue.Empty:
+                    continue
 
     def get_msg_from_queue(self):
         return self._input_queue.get(timeout=self._timeout)
