@@ -43,6 +43,7 @@ class BehringerX32(object):
         self._settings = {}
         self._verbose = verbose
         self._timeout = timeout
+        self.callbacks = []
 
         self._server = OSC.OSCServer(("", server_port))
         self._client = OSC.OSCClient(server=self._server) #This makes sure that client and server uses same socket. This has to be this way, as the X32 sends notifications back to same port as the /xremote message came from
@@ -63,7 +64,20 @@ class BehringerX32(object):
             "timestamp": time.monotonic(),
             "data": data
         }
-    
+        if self.callbacks:
+            setting = setting_paths.get(addr)
+            if setting:
+                value = setting.deserialize(data)
+                for callback in self.callbacks:
+                    callback(addr, value)
+                    
+    def register_callback(self, callback):
+        self.callbacks.append(callback)
+        
+    def clear_callback(self, callback):
+        if callback in self.callbacks:
+            self.callbacks.remove(callback)
+
     def get_value(self, path, max_age=None):
         if not path in setting_paths:
             raise ValueError(f"Unknown setting {path}")
