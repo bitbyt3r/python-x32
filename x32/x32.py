@@ -65,6 +65,7 @@ class BehringerX32(object):
             "data": data
         }
         if self.callbacks:
+            print(f"Handling callback {addr} {data}")
             setting = setting_paths.get(addr)
             if setting:
                 value = setting.deserialize(data)
