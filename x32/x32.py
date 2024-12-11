@@ -54,10 +54,19 @@ class BehringerX32(object):
         self._thread = threading.Thread(target=self._server.serve_forever)
         self._thread.daemon = True
         self._thread.start()
+        
+        self._ping_thread = threading.Thread(target=self.ping_thread)
+        self._ping_thread.daemon = True
+        self._thread.start()
 
     def __del__(self):
         self._server.close()
         self._client.close()
+        
+    def ping_thread(self):
+        while True:
+            self._client.send(OSC.OSCMessage("/xremote"))
+            time.sleep(7)
         
     def handle_message(self, addr, tags, data, client_address):
         self._settings[addr] = {
