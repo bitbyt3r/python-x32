@@ -57,7 +57,7 @@ class BehringerX32(object):
         
         self._ping_thread = threading.Thread(target=self.ping_thread)
         self._ping_thread.daemon = True
-        self._thread.start()
+        self._ping_thread.start()
 
     def __del__(self):
         self._server.close()
