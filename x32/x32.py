@@ -64,6 +64,7 @@ class BehringerX32(object):
             "timestamp": time.monotonic(),
             "data": data
         }
+        print(f"Got message {addr} {data}")
         if self.callbacks:
             print(f"Handling callback {addr} {data}")
             setting = setting_paths.get(addr)
