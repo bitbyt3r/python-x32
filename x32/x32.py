@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import time
 import threading
 import math
+import queue
 from . import OSC, x32parameters
 
 setting_paths = x32parameters.get_settings()
@@ -44,6 +45,7 @@ class BehringerX32(object):
         self._verbose = verbose
         self._timeout = timeout
         self.callbacks = []
+        self.send_queue = queue.Queue()
 
         self._server = OSC.OSCServer(("", server_port))
         self._client = OSC.OSCClient(server=self._server) #This makes sure that client and server uses same socket. This has to be this way, as the X32 sends notifications back to same port as the /xremote message came from
@@ -58,10 +60,20 @@ class BehringerX32(object):
         self._ping_thread = threading.Thread(target=self.ping_thread)
         self._ping_thread.daemon = True
         self._ping_thread.start()
+        
+        self._send_thread = threading.Thread(target=self.send_thread)
+        self._send_thread.daemon = True
+        self._send_thread.start()
 
     def __del__(self):
         self._server.close()
         self._client.close()
+        
+    def send_thread(self):
+        while True:
+            msg = self.send_queue.get()
+            self._client.send(msg)
+            time.sleep(0.001)
         
     def ping_thread(self):
         while True:
@@ -110,7 +122,7 @@ class BehringerX32(object):
             if not setting.validate(value):
                 raise ValueError(f"{value} is not a valid value for {path}")
             serialized = setting.serialize(value)
-            self._client.send(OSC.OSCMessage(path, serialized))
+            self.send_queue.put(OSC.OSCMessage(path, serialized))
         else:
             raise ValueError(f"Unknown setting {path}")
 
